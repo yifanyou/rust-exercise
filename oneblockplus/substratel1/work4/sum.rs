@@ -1,5 +1,5 @@
 fn main() {
-    let a = [10, 20, 30, 40, 50];
+    let a:[u32; 5] = [10, 20, 30, 40, 50];
     println!("{:?}", plus_all(&a).unwrap());
 }
 
@@ -10,11 +10,8 @@ fn plus_all(list: &[u32]) -> Option<u32> {
         op = total.checked_add(*value);
         match op {
             None => break,
-            _ => println!("{}", total),
+            _ => total = op.unwrap(),
         }
     }
-    match op {
-        None => None,
-        _ => Some(total),
-    }
+    op
 }
